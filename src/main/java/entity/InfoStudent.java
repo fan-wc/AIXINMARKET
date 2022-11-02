@@ -1,6 +1,7 @@
 package entity;
 
 public class InfoStudent {
+    //参数名和数据库字段名对应
     private String xuejiNum;
     private String stuNum;
     private String name;

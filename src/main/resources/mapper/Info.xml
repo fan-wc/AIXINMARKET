@@ -40,6 +40,9 @@
       <if test="imburseType = 5">"15"</if>
       WHERE info_studentId = any(SELECT id from info_student where xuejiNum = ${xuejiNum});
    </update>
+
+
+
    <update id="updateAiXinFuZhuang" parameterType="entity.InfoStudent">
       UPDATE aixin_student set balanceFuzhuang =
       <if test="imburseType = 1">"15"</if>

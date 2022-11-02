@@ -2,6 +2,7 @@ package entity;
 
 public class AixinStudent {
     private Integer id;
+    //同样与数据库字段名对应
     private Integer info_studentId;
     private String stuCard;
     private String balanceRiyong;

@@ -22,6 +22,10 @@ public class UpdateInfoUtil {
         Integer fuZhuang = 0;
         for(InfoStudent info : list){
             Integer info_studentId = infoDao.getInfoStudentId(info);
+            /**
+             * 涉及数额的不确定
+             * Info.xml 里也有-没用批量插入
+             */
             switch (info.getDepartmentId()){
                 case 1:
                     riYong=11;
@@ -48,6 +52,8 @@ public class UpdateInfoUtil {
             infoDao.insertAiXin(aixinStudent);
         }
     }
+
+
     public void updateRiYong(List<InfoStudent> list) {
         for (InfoStudent info : list){
 

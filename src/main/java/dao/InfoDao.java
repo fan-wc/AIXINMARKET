@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface InfoDao {
-    public Integer getSpecialId(String specialName);
-    public Integer getDepartmentId(String departmentName);
-    public Integer getCampus(String departmentName);
-    public Integer getImburseType(String imburseTypeName);
-    public AixinStudent getRiYongAndFuZhuang(InfoStudent infoStudent);
+    Integer getSpecialId(String specialName);
+    Integer getDepartmentId(String departmentName);
+    Integer getCampus(String departmentName);
+    Integer getImburseType(String imburseTypeName);
+    AixinStudent getRiYongAndFuZhuang(InfoStudent infoStudent);
 
     public Integer getInfoStudentId(InfoStudent infoStudent);
 

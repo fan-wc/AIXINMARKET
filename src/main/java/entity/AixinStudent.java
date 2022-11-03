@@ -16,11 +16,11 @@ public class AixinStudent {
         this.id = id;
     }
 
-    public Integer getInfo_studentId() {
+    public Integer getInfoStudentId() {
         return info_studentId;
     }
 
-    public void setInfo_studentId(Integer info_studentId) {
+    public void setInfoStudentId(Integer info_studentId) {
         this.info_studentId = info_studentId;
     }
 

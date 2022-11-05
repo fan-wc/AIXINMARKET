@@ -4,6 +4,8 @@ import dao.InfoDao;
 import entity.AixinStudent;
 import entity.InfoStudent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
@@ -18,28 +20,44 @@ public class UpdateInfoUtil {
         }
     }
     public void insertAiXin(List<InfoStudent> list){
-        int riYong = 0;
-        int fuZhuang = 0;
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/spring/application.xml");
+        infoDao = context.getBean("infoDao", InfoDao.class);
+        Integer riYong = 0;
+        Integer fuZhuang = 0;
         for(InfoStudent info : list){
-            Integer info_studentId = infoDao.getInfoStudentId(info);
-            /*
-             * 涉及数额的不确定
-             * Info.xml 里也有-没用批量插入
-             */
-            switch (info.getDepartmentId()){
-                case 1:
-                case 5:
-                case 2:
-                case 3:
-                case 4:
-                    riYong=11;
-                    fuZhuang=11;
-                    break;
-                default:
-                    break;
+            if(infoDao.getInfoStudentId(info) == null){
+                if (info.getImburseType() == null){
+                    info.setImburseType(0);
+                }
+                infoDao.insertInfo(info);
+                Integer info_studentId = infoDao.getInfoStudentId(info);
+
+                switch (info.getImburseType()){
+                    case 1:
+                        riYong=20;
+                        fuZhuang=150;
+                        break;
+                    case 5:
+                        riYong=20;
+                        fuZhuang=110;
+                        break;
+                    case 2:
+                        riYong=20;
+                        fuZhuang=130;
+                        break;
+                    case 3:
+                        riYong=20;
+                        fuZhuang=100;
+                        break;
+                    default:
+                        riYong=0;
+                        fuZhuang=0;
+                        break;
+                }
+                AixinStudent aixinStudent = new AixinStudent(info_studentId,info_studentId.toString(),riYong.toString(), fuZhuang.toString());
+                infoDao.insertAiXin(aixinStudent);
             }
-            AixinStudent aixinStudent = new AixinStudent(info_studentId,info_studentId.toString(), Integer.toString(riYong), Integer.toString(fuZhuang));
-            infoDao.insertAiXin(aixinStudent);
+
         }
     }
 

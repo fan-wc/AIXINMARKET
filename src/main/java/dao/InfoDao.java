@@ -11,6 +11,7 @@ public interface InfoDao {
     Integer getDepartmentId(String departmentName);
     Integer getCampus(String departmentName);
     Integer getImburseType(String imburseTypeName);
+
     AixinStudent getRiYongAndFuZhuang(InfoStudent infoStudent);
 
     public Integer getInfoStudentId(InfoStudent infoStudent);

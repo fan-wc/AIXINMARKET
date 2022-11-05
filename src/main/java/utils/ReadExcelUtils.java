@@ -52,6 +52,7 @@ public class ReadExcelUtils {
                 String code = cells[5].getContents();
                 String clas = cells[7].getContents();
                 //这里有个问题-参数传不进去好像***************************
+
                 Integer specialId=0;
                 try {
                     specialId = infoDao.getSpecialId(special);
@@ -63,7 +64,7 @@ public class ReadExcelUtils {
                 Integer campus = infoDao.getCampus(scho);
                 Integer imbursetype = infoDao.getImburseType(clas);
 
-                InfoStudent infoStudent = new InfoStudent(code,code,name,departId,specialId,Integer.getInteger(grade),campus,imbursetype);
+                InfoStudent infoStudent = new InfoStudent(code,code,name,departId,specialId,Integer.parseInt(grade),campus,imbursetype);
 
                 list.add(infoStudent);
             }

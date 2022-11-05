@@ -106,6 +106,7 @@ public class InfoStudent {
                 ", grade=" + grade +
                 ", eduLevel=" + eduLevel +
                 ", campus=" + campus +
+                ", imburseType=" + imburseType +
                 '}';
     }
 }

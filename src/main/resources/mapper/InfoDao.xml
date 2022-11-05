@@ -4,16 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.InfoDao">
    <select id="getSpecialId" parameterType="java.lang.String" resultType="java.lang.Integer">
-      SELECT id FROM param_special WHERE specialName = #{specialName}
+      SELECT id FROM param_special WHERE specialName = #{specialName} LIMIT 1
    </select>
    <select id="getDepartmentId" parameterType="java.lang.String" resultType="java.lang.Integer">
-      SELECT id FROM param_department WHERE departmentName = #{departmentName}
+      SELECT id FROM param_department WHERE departmentName = #{departmentName} LIMIT 1
    </select>
    <select id="getCampus" parameterType="java.lang.String" resultType="java.lang.Integer">
-      SELECT departmentCampus FROM param_department WHERE departmentName = #{departmentName}
+      SELECT departmentCampus FROM param_department WHERE departmentName = #{departmentName} LIMIT 1
    </select>
    <select id="getImburseType" parameterType="java.lang.String" resultType="java.lang.Integer">
-      SELECT id FROM param_imbursetype WHERE imburseTypeName = #{imburseTypeName}
+      SELECT id  FROM param_imbursetype WHERE imburseTypeName = #{imburseTypeName}
    </select>
 
    <select id="getRiYongAndFuZhuang" resultType="entity.AixinStudent" parameterType="entity.InfoStudent">
@@ -25,10 +25,10 @@
    </select>
 
    <insert id="insertInfo" parameterType="entity.AixinStudent" >
-      INSERT INTO info_student (xuejiNum,stuNum,name,departmentId,specialNum,grade,campus) values (#{xuejiNum},#{stuNum},#{name},#{departmentId},#{specialId},#{grade},#{campus})
+      INSERT INTO info_student (xuejiNum,stuNum,name,departmentId,specialNum,grade,imburseType) values (#{xuejiNum},#{stuNum},#{name},#{departmentId},#{specialId},#{grade},#{imburseType})
    </insert>
    <insert id="insertAiXin" parameterType="entity.AixinStudent">
-      INSERT INTO aixin_student (info_studentId,stuCard,balanceRiyong,balanceFuzhuang) values (#{info_studentId},#{stuCard},#{balanceRiyong},#{balanceFuzhuang})
+      INSERT INTO aixin_student (info_student_id,student_card,balance_riyong,balance_fuzhuang) values (#{info_studentId},#{stuCard},#{balanceRiyong},#{balanceFuzhuang})
    </insert>
 
    <update id="updateAiXinRiYong" parameterType="entity.InfoStudent">
